@@ -18,8 +18,8 @@ class SiteModel {
             $host = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
             $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
             $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
-            $database = "shopdb";
-        } 
+            $database = "localdb";
+        }
 
         $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error($con));
         $sql = mysqli_select_db($con,$database);

@@ -7,7 +7,7 @@ class SiteModel {
 
     //Get all products by type from the database and return them to array.
     function GetProductTypes() {
-        require 'Credentials.php';
+
 
         //Open connection to database
         foreach  ($_SERVER as $key => $value) {
@@ -19,7 +19,9 @@ class SiteModel {
             $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
             $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
             $database = "shopdb";
-        } $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error($con));
+        } 
+
+        $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error($con));
         $sql = mysqli_select_db($con,$database);
         $result = mysqli_query($con,"SELECT DISTINCT type FROM webshop") or die(mysqli_error($con));
         $types = array();

@@ -14,7 +14,6 @@
                 <ul id="nav">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="Products.php">Products</a></li>
-                    <li><a href="#">About</a></li>
                 </ul>
             </nav>
             

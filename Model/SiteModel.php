@@ -9,8 +9,17 @@ class SiteModel {
     function GetProductTypes() {
         require 'Credentials.php';
 
-        //Open connection and Select database.
-        $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error($con));
+        //Open connection to database
+        foreach  ($_SERVER as $key => $value) {
+            if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
+                continue;
+            }
+
+            $host = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+            $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+            $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+            $database = "shopdb";
+        } $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error($con));
         $sql = mysqli_select_db($con,$database);
         $result = mysqli_query($con,"SELECT DISTINCT type FROM webshop") or die(mysqli_error($con));
         $types = array();
@@ -29,7 +38,7 @@ class SiteModel {
     function GetProductByType($type) {
         require 'Credentials.php';
 
-        //Open connection and Select database.
+        //Open connection to database
         $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error);
         $sql = mysqli_select_db($con,$database);
 
@@ -37,7 +46,7 @@ class SiteModel {
         $result = mysqli_query($con,$query) or die(mysqli_error($con));
         $productArray = array();
 
-        //Gets data from selected database.
+        //Gets data from database.
         while ($row = mysqli_fetch_array($result)) {
             $name = $row[1];
             $type = $row[2];

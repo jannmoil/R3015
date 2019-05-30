@@ -115,6 +115,28 @@ class SiteModel {
         //Close connection and return result
         mysqli_close($con);
         return $product;
-}
+    }
 
+    function PerformQuery($query)
+    {
+        foreach  ($_SERVER as $key => $value) {
+            if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
+                continue;
+            }
+
+            $host = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+            $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+            $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+            $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
+        }
+        
+        $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error);
+        $sql = mysqli_select_db($con,$database);
+     
+        mysqli_query($query) or die(mysqli_error);
+        mysqli_close($con);
+    }
+    
+    function InsertProduct(SiteEntity
+}        
 ?>

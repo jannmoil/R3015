@@ -2,28 +2,28 @@
 require ("Controller/SiteController.php");
 $siteController = new SiteController();
 
-$title = "Add a new Coffee";
+$title = "Add a new Product";
 
 $content ="<form action='' method='post'>
     <fieldset>
-        <legend>Add a new Coffee</legend>
+        <legend>Add a new product</legend>
         <label for='name'>Name: </label>
         <input type='text' class='inputField' name='txtName' /><br/>
 
         <label for='type'>Type: </label>
         <select class='inputField' name='ddlType'>
             <option value='%'>All</option>"
-        .$siteController->CreateOptionValues($SiteController->GetProductTypes()).
+        .$siteController->CreateOptionValues($siteController->GetProductTypes()).
         "</select><br/>
 
         <label for='price'>Price: </label>
         <input type='text' class='inputField' name='txtPrice' /><br/>
 
-        <label for='roast'>Roast: </label>
-        <input type='text' class='inputField' name='txtRoast' /><br/>
+        <label for='color'>Color: </label>
+        <input type='text' class='inputField' name='txtColor' /><br/>
 
-        <label for='country'>Country: </label>
-        <input type='text' class='inputField' name='txtCountry' /><br/>
+        <label for='label'>Label: </label>
+        <input type='text' class='inputField' name='txtLabel' /><br/>
 
         <label for='image'>Image: </label>
         <select class='inputField' name='ddlImage'>"
@@ -40,7 +40,7 @@ $content ="<form action='' method='post'>
 
 if(isset($_POST["txtName"]))
 {
-    $siteController->InsertCoffee();
+    $siteController->InsertProduct();
 }
 include 'Template.php';
 ?>

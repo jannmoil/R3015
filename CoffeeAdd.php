@@ -1,5 +1,5 @@
 <?php
-require './Controller/SiteController.php';
+require ("Controller/SiteController.php");
 $SiteController = new SiteController();
 
 $title = "Add a new Coffee";
@@ -42,7 +42,7 @@ if(isset($_POST["txtName"]))
 {
     $SiteController->InsertCoffee();
 }
-include './Template.php';
+include 'Template.php';
 ?>
 
 

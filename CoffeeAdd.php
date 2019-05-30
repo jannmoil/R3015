@@ -1,6 +1,6 @@
 <?php
 require ("Controller/SiteController.php");
-$SiteController = new SiteController();
+$siteController = new SiteController();
 
 $title = "Add a new Coffee";
 
@@ -13,7 +13,7 @@ $content ="<form action='' method='post'>
         <label for='type'>Type: </label>
         <select class='inputField' name='ddlType'>
             <option value='%'>All</option>"
-        .$SiteController->CreateOptionValues($SiteController->GetProductTypes()).
+        .$siteController->CreateOptionValues($SiteController->GetProductTypes()).
         "</select><br/>
 
         <label for='price'>Price: </label>
@@ -27,7 +27,7 @@ $content ="<form action='' method='post'>
 
         <label for='image'>Image: </label>
         <select class='inputField' name='ddlImage'>"
-        .$SiteController->GetImages().
+        .$siteController->GetImages().
         "</select></br>
 
         <label for='review'>Review: </label>
@@ -40,7 +40,7 @@ $content ="<form action='' method='post'>
 
 if(isset($_POST["txtName"]))
 {
-    $SiteController->InsertCoffee();
+    $siteController->InsertCoffee();
 }
 include 'Template.php';
 ?>

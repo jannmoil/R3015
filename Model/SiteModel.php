@@ -1,6 +1,6 @@
 <?php
 
-require './Entities/SiteEntity.php';
+require ("Entities/SiteEntity.php");
 
 //Code for connecting database
 class SiteModel {
@@ -78,44 +78,5 @@ class SiteModel {
         mysqli_close($con);
         return $productArray;
     }
-
-    function GetProductById($id)
-    {
-        foreach  ($_SERVER as $key => $value) {
-            if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
-                continue;
-            }
-
-            $host = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
-            $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
-            $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
-            $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
-        }
-        
-        $con = mysqli_connect($host, $user, $passwd) or die(mysqli_error);
-        $sql = mysqli_select_db($con,$database);
-
-        $query = "SELECT * FROM webshop WHERE id = $id";
-        $result = mysqli_query($con,$query) or die(mysqli_error($con));
-
-        //Gets data from database.
-        while ($row = mysqli_fetch_array($result)) {
-            $name = $row[1];
-            $type = $row[2];
-            $price = $row[3];
-            $color = $row[4];
-            $label = $row[5];
-            $image = $row[6];
-            $review = $row[7];
-
-            //Generates product
-            $product = new SiteEntity($id, $name, $type, $price, $color, $label, $image, $review);
-            
-        }
-        //Close connection and return result
-        mysqli_close($con);
-        return $product;
-    }
-
 }        
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+
 require 'Controller/SiteController.php';
 $productController = new SiteController();
 

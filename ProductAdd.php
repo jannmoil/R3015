@@ -1,5 +1,7 @@
 <?php
 require ("Controller/SiteController.php");
+include 'Template.php';
+
 $siteController = new SiteController();
 
 $title = "Add a new Product";

@@ -1,6 +1,8 @@
 <?php
-require ("Controller/SiteController.php");
 include 'Template.php';
+
+require ("Controller/SiteController.php");
+
 
 $siteController = new SiteController();
 
@@ -44,7 +46,7 @@ if(isset($_POST["txtName"]))
 {
     $siteController->InsertProduct();
 }
-include 'Template.php';
+
 ?>
 
 

@@ -1,5 +1,5 @@
 <?php
-require './Controller/SiteController.php';
+require ("Controller/SiteController.php");
 $siteController = new SiteController();
 
 $title = "Add a new Product";

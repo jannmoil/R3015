@@ -74,17 +74,32 @@ class SiteController {
         return $result;
     }
 
-    //Functions to get products by type
-    function GetProductByType($type) {
-        $productModel = new SiteModel();
-        return $productModel->GetProductByType($type);
+     //Returns list of files in a folder.
+     function GetImages() {
+        //Select folder to scan
+        $handle = opendir("Images/Products");
+
+        //Read all files and store names in array
+        while ($image = readdir($handle)) {
+            $images[] = $image;
+        }
+
+        closedir($handle);
+
+        //Exclude all filenames where filename length < 3
+        $imageArray = array();
+        foreach ($images as $image) {
+            if (strlen($image) > 2) {
+                array_push($imageArray, $image);
+            }
+        }
+
+        //Create <select><option> Values and return result
+        $result = $this->CreateOptionValues($imageArray);
+        return $result;
     }
 
-    function GetProductTypes() {
-        $productModel = new SiteModel();
-        return $productModel->GetProductTypes();
-    }
-
+    //<editor-fold desc="Set Methods">
     function InsertProduct() {
         $name = $_POST["txtName"];
         $type = $_POST["ddlType"];
@@ -95,39 +110,35 @@ class SiteController {
         $review = $_POST["txtReview"];
 
         $product = new SiteEntity(-1, $name, $type, $price, $color, $label, $image, $review);
-        $productModel new SiteModel();
+        $productModel = new SiteModel();
         $productModel->InsertProduct($product);
     }
 
-    function UpdateProduct($id) {}
-    
-    function DeleteProduct($id) {}
+    function UpdateProduct($id) {
         
+    }
+
+    function DeleteProduct($id) {
+        
+    }
+    //</editor-fold>
+    
+    //<editor-fold desc="Get Methods">
     function GetProductById($id) {
-        $productModel = new Sitemodel();
+        $productModel = new SiteModel();
         return $productModel->GetProductById($id);
     }
-    
-    function GetImages() {
-        $handle = opendir("Images/Products");
 
-        while($image = readdir($handle)) {
-            $images[] = $image;
-        }
-
-        closedir($handle);
-
-        $imageArray = array();
-        foreach($images as $image) {
-            if(strlen($image) > 2) {
-                array_push($imageArray, $image);
-            }
-        }
-
-        $result = $this->CreateOptionValues($imageArray);
-        return $result;
+    function GetProductByType($type) {
+        $productModel = new SiteModel();
+        return $productModel->GetProductByType($type);
     }
-    
+
+    function GetProductTypes() {
+        $productModel = new siteModel();
+        return $productModel->GetProductTypes();
+    }
+    //</editor-fold>
 }
 
 ?>

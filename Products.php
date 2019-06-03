@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 
-require 'Controller/SiteController.php';
+require './Controller/SiteController.php';
 $productController = new SiteController();
 
 if(isset($_POST['types']))

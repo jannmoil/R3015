@@ -1,5 +1,5 @@
 <?php
-include 'Template.php';
+error_reporting(E_ALL);
 
 require ("Controller/SiteController.php");
 
@@ -46,7 +46,7 @@ if(isset($_POST["txtName"]))
 {
     $siteController->InsertProduct();
 }
-
+include 'Template.php';
 ?>
 
 

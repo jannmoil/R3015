@@ -1,6 +1,6 @@
 <?php
 
-require ("Entities/SiteEntity.php");
+require './Entities/SiteEntity.php';
 
 //Code for connecting database
 class SiteModel {

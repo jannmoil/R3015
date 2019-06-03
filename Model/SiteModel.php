@@ -137,6 +137,40 @@ class SiteModel {
         mysqli_close($con);
     }
     
-    function InsertProduct(SiteEntity
+    function InsertProduct(SiteEntity $product) {
+        $query = sprintf("INSERT INTO product
+                                  (name, type, price, color, label, image, review)
+                                  VALUES
+                                  ('$s','$s','$s','$s','$s','$s','$s')",
+                            mysqli_real_escape_string($product->name),
+                            mysqli_real_escape_string($product->type),
+                            mysqli_real_escape_string($product->price),
+                            mysqli_real_escape_string($product->color),
+                            mysqli_real_escape_string($product->label),
+                            mysqli_real_escape_string("Images/Products/" . $product->image),
+                            mysqli_real_escape_string($product->review));
+        $this->PerformQuery($query);
+    }
+    
+    function UpdateProduct($id, SiteEntity $product) {
+        $query = sprintf("UPDATE product
+                            SET name = '%s', type = '%s', price = '%s', color = '%s',
+                            label ='%s', image = '%s', review ='%s'
+                            WHERE id = $id",
+                             mysqli_real_escape_string($product->name),
+                             mysqli_real_escape_string($product->type),
+                             mysqli_real_escape_string($product->price),
+                             mysqli_real_escape_string($product->color),
+                             mysqli_real_escape_string($product->label),
+                             mysqli_real_escape_string("Images/Products/" . $product->image),
+                             mysqli_real_escape_string($product->review));
+        $this->PerformQuery($query);
+
+    }
+    
+    function DeleteProduct ($id) {
+        $query = "DELETE FROM product WHERE id = $id";
+        $this->PerformQuery($query);
+    }
 }        
 ?>

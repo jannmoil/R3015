@@ -1,6 +1,6 @@
 <?php
 
-require ("Model/SiteModel.php");
+require './Model/SiteModel.php';
 
 //Contains functions for the page
 class SiteController {

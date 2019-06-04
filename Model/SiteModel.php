@@ -114,6 +114,7 @@ class SiteModel {
         
         $con = mysqli_connect($host, $user, $passwd) or die(mysqli_connect_error());
         $sql = mysqli_select_db($con,$database);
+        $db = new mysqli;
      
         mysqli_query($query) or die(mysqli_connect_error());
         mysqli_close($con);
@@ -122,13 +123,13 @@ class SiteModel {
                                   (name, type, price, color, label, image, review)
                                   VALUES
                                   ('%s','%s','%s','%s','%s','%s','%s')",
-                            mysqli_real_escape_string($product->name),
-                            mysqli_real_escape_string($product->type),
-                            mysqli_real_escape_string($product->price),
-                            mysqli_real_escape_string($product->color),
-                            mysqli_real_escape_string($product->label),
-                            mysqli_real_escape_string("Images/Products/" . $product->image),
-                            mysqli_real_escape_string($product->review));
+                            mysqli_real_escape_string($db,$name),
+                            mysqli_real_escape_string($db,$type),
+                            mysqli_real_escape_string($db,$price),
+                            mysqli_real_escape_string($db,$color),
+                            mysqli_real_escape_string($db,$label),
+                            mysqli_real_escape_string("Images/Products/" . $db,$image),
+                            mysqli_real_escape_string($db,$review));
         
     }
     

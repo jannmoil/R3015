@@ -104,6 +104,21 @@ class SiteModel {
                                   (name, type, price, color, label, image, review)
                                   VALUES
                                   ('%s','%s','%s','%s','%s','%s','%s')",
+                            $sql->real_escape_string($name),
+                            $sql->real_escape_string($type),
+                            $sql->real_escape_string($price),
+                            $sql->real_escape_string($color),
+                            $sql->real_escape_string($label),
+                            $sql->real_escape_string("Images/Products/" . $image),
+                            $sql->real_escape_string($review));
+        $this->PerformQuery($query);
+    }
+    
+    function InsertProductX(SiteEntity $product) {
+        $query = sprintf("INSERT INTO product
+                                  (name, type, price, color, label, image, review)
+                                  VALUES
+                                  ('%s','%s','%s','%s','%s','%s','%s')",
                             mysqli_real_escape_string($product->name),
                             mysqli_real_escape_string($product->type),
                             mysqli_real_escape_string($product->price),

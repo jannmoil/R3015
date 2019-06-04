@@ -104,13 +104,13 @@ class SiteModel {
                                   (name, type, price, color, label, image, review)
                                   VALUES
                                   ('%s','%s','%s','%s','%s','%s','%s')",
-                            $sql->real_escape_string($name),
-                            $sql->real_escape_string($type),
-                            $sql->real_escape_string($price),
-                            $sql->real_escape_string($color),
-                            $sql->real_escape_string($label),
-                            $sql->real_escape_string("Images/Products/" . $image),
-                            $sql->real_escape_string($review));
+                            mysqli_real_escape_string($name, $sql),
+                            mysqli_real_escape_string($type,$sql),
+                            mysqli_real_escape_string($price, $sql),
+                            mysqli_real_escape_string($color,$sql),
+                            mysqli_real_escape_string($label,$sql),
+                            mysqli_real_escape_string("Images/Products/" . $image,$sql),
+                            mysqli_real_escape_string($review,$sql));
         $this->PerformQuery($query);
     }
     

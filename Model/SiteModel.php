@@ -103,7 +103,7 @@ class SiteModel {
         $query = sprintf("INSERT INTO product
                                   (name, type, price, color, label, image, review)
                                   VALUES
-                                  ('$s','$s','$s','$s','$s','$s','$s')",
+                                  ('%s','%s','%s','%s','%s','%s','%s')",
                             mysqli_real_escape_string($product->name),
                             mysqli_real_escape_string($product->type),
                             mysqli_real_escape_string($product->price),

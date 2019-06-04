@@ -78,5 +78,61 @@ class SiteModel {
         mysqli_close($con);
         return $productArray;
     }
+    
+    function PerformQuery($query)
+    {
+        foreach  ($_SERVER as $key => $value) {
+            if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
+                continue;
+            }
+
+            $host = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+            $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+            $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+            $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
+        }
+        
+        $con = mysqli_connect($host, $user, $passwd) or die(mysqli_connect_error());
+        $sql = mysqli_select_db($con,$database);
+     
+        mysqli_query($query) or die(mysqli_connect_error());
+        mysqli_close($con);
+    }
+    
+    function InsertProduct(SiteEntity $product) {
+        $query = sprintf("INSERT INTO product
+                                  (name, type, price, color, label, image, review)
+                                  VALUES
+                                  ('$s','$s','$s','$s','$s','$s','$s')",
+                            mysqli_real_escape_string($product->name),
+                            mysqli_real_escape_string($product->type),
+                            mysqli_real_escape_string($product->price),
+                            mysqli_real_escape_string($product->color),
+                            mysqli_real_escape_string($product->label),
+                            mysqli_real_escape_string("Images/Products/" . $product->image),
+                            mysqli_real_escape_string($product->review));
+        $this->PerformQuery($query);
+    }
+    
+    function UpdateProduct($id, SiteEntity $product) {
+        $query = sprintf("UPDATE product
+                            SET name = '%s', type = '%s', price = '%s', color = '%s',
+                            label ='%s', image = '%s', review ='%s'
+                            WHERE id = $id",
+                             mysqli_real_escape_string($product->name),
+                             mysqli_real_escape_string($product->type),
+                             mysqli_real_escape_string($product->price),
+                             mysqli_real_escape_string($product->color),
+                             mysqli_real_escape_string($product->label),
+                             mysqli_real_escape_string("Images/Products/" . $product->image),
+                             mysqli_real_escape_string($product->review));
+        $this->PerformQuery($query);
+
+    }
+    
+    function DeleteProduct ($id) {
+        $query = "DELETE FROM product WHERE id = $id";
+        $this->PerformQuery($query);
+    }
 }        
 ?>

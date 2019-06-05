@@ -99,20 +99,7 @@ class SiteController {
         return $result;
     }
 
-    //Set Methods
-    function InsertProduct() {
-        $name = $_POST["txtName"];
-        $type = $_POST["ddlType"];
-        $price = $_POST["txtPrice"];
-        $color = $_POST["txtColor"];
-        $label = $_POST["txtLabel"];
-        $image = $_POST["ddlImage"];
-        $review = $_POST["txtReview"];
-
-        $product = new SiteEntity(-1, $name, $type, $price, $color, $label, $image, $review);
-        $productModel = new SiteModel();
-        $productModel->InsertProduct($product);
-    }
+    
 
     function UpdateProduct($id) {
         

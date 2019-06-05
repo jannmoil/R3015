@@ -11,8 +11,11 @@ foreach  ($_SERVER as $key => $value) {
     $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
 }
 
-$con = mysqli_connect($host, $user, $passwd) or die(mysqli_error($con));
-$sql = mysqli_select_db($con,$database);
+$conn = new mysqli($host, $user, $passwd, $dbname);
+
+if($conn->connect_error) {
+    die("Connection failed:" . $conn->connect_error);
+}
 
 $txtName = mysqli_real_escape_string($sql, $_POST['txtName']);
 $ddlType = mysqli_real_escape_string($sql, $_POST['ddlType']);
@@ -22,16 +25,16 @@ $txtLabel = mysqli_real_escape_string($sql, $_POST['txtLabel']);
 $ddlImage = mysqli_real_escape_string($sql, $_POST['ddlImage']);
 $txtReview = mysqli_real_escape_string($sql, $_POST['txtReview']);
 
-$sqli = "INSERT INTO product (txtName, ddlType, txtPrice, txtColor, txtLabel, ddlImage, txtReview)
+$sql = "INSERT INTO product (txtName, ddlType, txtPrice, txtColor, txtLabel, ddlImage, txtReview)
          VALUES ('$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
 
-if($sql->query($sqli) === TRUE) {
+if($conn->query($sql) === TRUE) {
     echo "Product addded.";
 }
 else
 {
-    echo "Error" . $sqli . "<br/>" . $sql->error;
+    echo "Error" . $sql . "<br/>" . $conn->error;
 }
-$con->close();
+$conn->close();
 
 ?>

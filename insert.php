@@ -27,7 +27,7 @@ $ddlImage = mysqli_real_escape_string($conn, $_POST['ddlImage']);
 $txtReview = mysqli_real_escape_string($conn, $_POST['txtReview']);
 
 $sql = "INSERT INTO product (id, name, type, price, color, label, image, review)
-         VALUES ('$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
+         VALUES ('$txtId', '$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
 
 if($conn->query($sql) === TRUE) {
     echo "Product addded.";

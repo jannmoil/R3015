@@ -11,7 +11,7 @@ foreach  ($_SERVER as $key => $value) {
     $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
 }
 
-$conn = new mysqli($host, $user, $passwd, $dbname);
+$conn = new mysqli($host, $user, $passwd, $database);
 
 if($conn->connect_error) {
     die("Connection failed:" . $conn->connect_error);

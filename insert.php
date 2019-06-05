@@ -17,17 +17,16 @@ if($conn->connect_error) {
     die("Connection failed:" . $conn->connect_error);
 }
 
-$txtId = mysqli_real_escape_string($conn, $_POST['txtId']);
-$txtName = mysqli_real_escape_string($conn, $_POST['txtName']);
-$ddlType = mysqli_real_escape_string($conn, $_POST['ddlType']);
-$txtPrice = mysqli_real_escape_string($conn, $_POST['txtPrice']);
-$txtColor = mysqli_real_escape_string($conn, $_POST['txtColor']);
-$txtLabel = mysqli_real_escape_string($conn, $_POST['txtLabel']);
-$ddlImage = mysqli_real_escape_string($conn, $_POST['ddlImage']);
-$txtReview = mysqli_real_escape_string($conn, $_POST['txtReview']);
+$txtName = mysqli_real_escape_string($conn, $_POST['name']);
+$ddlType = mysqli_real_escape_string($conn, $_POST['type']);
+$txtPrice = mysqli_real_escape_string($conn, $_POST['price']);
+$txtColor = mysqli_real_escape_string($conn, $_POST['color']);
+$txtLabel = mysqli_real_escape_string($conn, $_POST['label']);
+$ddlImage = mysqli_real_escape_string($conn, $_POST['image']);
+$txtReview = mysqli_real_escape_string($conn, $_POST['review']);
 
 $sql = "INSERT INTO product (id, name, type, price, color, label, image, review)
-         VALUES ('$txtId', '$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
+         VALUES ('$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
 
 if($conn->query($sql) === TRUE) {
     echo "Product addded.";

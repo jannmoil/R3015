@@ -126,6 +126,47 @@ class SiteController {
         return $productModel->GetProductTypes();
     }
     
+    function GetProductByType2($type) {
+        $productModel = new SiteModel();
+        return $productModel->GetProductByType2($type);
+    }
+    
+    //Overview table
+    function CreateOverviewTable() {
+        $result ="
+            <table class='overviewTable'>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>Id</b></td>
+                <td><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Price</b></td>
+                <td><b>Color</b></td>
+                <td><b>Label</b></td>
+            </tr>";
+        
+        $productArray = $this->GetProductByType2 ('%');
+
+        foreach ($productArray as $key => $value)
+        {
+            $result = $result
+                "<tr>
+                    <td><a href=''>Update</a></td>
+                    <td><a href=''>Delete</a></td>
+                    <td>$value->id</td>
+                    <td>$value->name</td>
+                    <td>$value->type</td>
+                    <td>$value->price</td>
+                    <td>$value->color</td>
+                    <td>$value->label</td>
+                </tr>";
+        }
+        
+        $result = $result . "</table>";
+        return $result;
+        
+     }
     
 }
 

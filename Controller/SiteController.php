@@ -125,43 +125,7 @@ class SiteController {
         $productModel = new siteModel();
         return $productModel->GetProductTypes();
     }
-    //Overview table
-    function CreateOverviewTable() {
-        $result ="
-            <table class='overviewTable'>
-            <tr>
-                <td></td>
-                <td></td>
-                <td><b>Id</b></td>
-                <td><b>Name</b></td>
-                <td><b>Type</b></td>
-                <td><b>Price</b></td>
-                <td><b>Color</b></td>
-                <td><b>Label</b></td>
-            </tr>";
-        
-        $productArray = $this->GetProductByType ('%');
-
-        foreach ($productArray as $key => $value)
-        {
-            $result = $result
-                "<tr>
-                    <td><a href=''>Update</a></td>
-                    <td><a href=''>Delete</a></td>
-                    <td>$value->id</td>
-                    <td>$value->name</td>
-                    <td>$value->type</td>
-                    <td>$value->price</td>
-                    <td>$value->color</td>
-                    <td>$value->label</td>
-                </tr>";
-             
-        }
-        
-        $result = $result . "</table>";
-        return $result;
-        
-     }
+    
     
 }
 

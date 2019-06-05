@@ -8,7 +8,7 @@ $siteController = new SiteController();
 
 $title = "Add a new Product";
 
-$content ="<form action='' method='post'>
+$content ="<form action='insert.php' method='post'>
     <fieldset>
         <legend>Add a new product</legend>
         <label for='name'>Name: </label>
@@ -41,11 +41,6 @@ $content ="<form action='' method='post'>
     </fieldset>
 </form>";
 
-
-if(isset($_POST["txtName"]))
-{
-    $siteController->InsertProduct();
-}
 include 'Template.php';
 ?>
 

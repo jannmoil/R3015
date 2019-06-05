@@ -17,6 +17,7 @@ if($conn->connect_error) {
     die("Connection failed:" . $conn->connect_error);
 }
 
+$txtId = mysqli_real_escape_string($conn, $_POST['txtId']);
 $txtName = mysqli_real_escape_string($conn, $_POST['txtName']);
 $ddlType = mysqli_real_escape_string($conn, $_POST['ddlType']);
 $txtPrice = mysqli_real_escape_string($conn, $_POST['txtPrice']);
@@ -25,7 +26,7 @@ $txtLabel = mysqli_real_escape_string($conn, $_POST['txtLabel']);
 $ddlImage = mysqli_real_escape_string($conn, $_POST['ddlImage']);
 $txtReview = mysqli_real_escape_string($conn, $_POST['txtReview']);
 
-$sql = "INSERT INTO product (-1, name, type, price, color, label, image, review)
+$sql = "INSERT INTO product (id, name, type, price, color, label, image, review)
          VALUES ('$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
 
 if($conn->query($sql) === TRUE) {

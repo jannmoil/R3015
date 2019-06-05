@@ -11,6 +11,10 @@ $title = "Add a new Product";
 $content ="<form action='insert.php' method='post'>
     <fieldset>
         <legend>Add a new product</legend>
+        
+        <label for='id'>ID: </label>
+        <input type='text' class='inputField' name='txtid' id='txtId'/><br/>
+        
         <label for='name'>Name: </label>
         <input type='text' class='inputField' name='txtName' id='txtName' /><br/>
 

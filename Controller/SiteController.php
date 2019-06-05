@@ -99,7 +99,7 @@ class SiteController {
         return $result;
     }
 
-    //<editor-fold desc="Set Methods">
+    //Set Methods
     function InsertProduct() {
         $name = $_POST["txtName"];
         $type = $_POST["ddlType"];
@@ -121,9 +121,9 @@ class SiteController {
     function DeleteProduct($id) {
         
     }
-    //</editor-fold>
     
-    //<editor-fold desc="Get Methods">
+    
+    //Get Methods
     function GetProductById($id) {
         $productModel = new SiteModel();
         return $productModel->GetProductById($id);
@@ -138,7 +138,44 @@ class SiteController {
         $productModel = new siteModel();
         return $productModel->GetProductTypes();
     }
-    //</editor-fold>
+    //Overview table
+    function CreateOverviewTable() {
+        $result ="
+            <table class='overviewTable'>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>Id</b></td>
+                <td><b>Name</b></td>
+                <td><b>Type</b></td>
+                <td><b>Price</b></td>
+                <td><b>Color</b></td>
+                <td><b>Label</b></td>
+            </tr>";
+        
+        $productArray = $this->GetProductByType ('%');
+
+        foreach ($productArray as $key => $value)
+        {
+            $result = $result
+                "<tr>
+                    <td><a href=''>Update</a></td>
+                    <td><a href=''>Delete</a></td>
+                    <td>$value->id</td>
+                    <td>$value->name</td>
+                    <td>$value->type</td>
+                    <td>$value->price</td>
+                    <td>$value->color</td>
+                    <td>$value->label</td>
+                </tr>";
+             
+        }
+        
+        $result = $result . "</table>";
+        return $result;
+        
+     }
+    
 }
 
 ?>

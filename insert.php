@@ -25,7 +25,7 @@ $txtLabel = mysqli_real_escape_string($sql, $_POST['txtLabel']);
 $ddlImage = mysqli_real_escape_string($sql, $_POST['ddlImage']);
 $txtReview = mysqli_real_escape_string($sql, $_POST['txtReview']);
 
-$sql = "INSERT INTO product (txtName, ddlType, txtPrice, txtColor, txtLabel, ddlImage, txtReview)
+$sql = "INSERT INTO localdb (txtName, ddlType, txtPrice, txtColor, txtLabel, ddlImage, txtReview)
          VALUES ('$txtName', '$ddlType', '$txtPrice', '$txtColor', '$txtLabel', '$ddlImage', '$txtReview')";
 
 if($conn->query($sql) === TRUE) {

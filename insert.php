@@ -1,5 +1,5 @@
 <?php
-
+//Open connection to database
 foreach  ($_SERVER as $key => $value) {
     if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
         continue;
@@ -16,7 +16,7 @@ $conn = new mysqli($host, $user, $passwd, $database);
 if($conn->connect_error) {
     die("Connection failed:" . $conn->connect_error);
 }
-
+//Adding data to right places in a form
 $txtName = mysqli_real_escape_string($conn, $_POST['txtName']);
 $ddlType = mysqli_real_escape_string($conn, $_POST['ddlType']);
 $txtPrice = mysqli_real_escape_string($conn, $_POST['txtPrice']);

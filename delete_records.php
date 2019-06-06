@@ -10,7 +10,7 @@ foreach  ($_SERVER as $key => $value) {
     $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
 }
 
-$con = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
+$con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 
 
 ?>

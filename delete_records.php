@@ -48,6 +48,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
        }
     ?>
     <table class="table table-condensed table-bordered">
+        <a href="Products.php">Back to the webshop</a><br/>
         <tr>
             <th>ID</th>
             <th>Name</th>

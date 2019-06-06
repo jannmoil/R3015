@@ -1,4 +1,5 @@
 <?php
+//Open connection to database
 foreach  ($_SERVER as $key => $value) {
     if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
         continue;
@@ -13,25 +14,28 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 
 <!DOCTYPE html>
 <html>
-<head>
+<head>  
+        //Title and stylesheet url
         <title>Delete Records</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body style="padding-top: 100px;">
 
 <?php
+    //Query for fetching the data
     $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("Could not fetch.".mysqli_connect_error());
 ?>   
-    <a href="Products.php">Back to the webshop</a><br/>
-    
+   
 <div class="container">
     <?php
+    
+    //Functions for delete button and checkbox
     if(isset($_POST['submitDeleteBtn'])){
     $key = $_POST['keyToDelete'];
-        //check if the products are there
+        //Check if the products are there
     $check = mysqli_query($con,"SELECT * FROM webshop WHERE id ='$key' ") or die ("Product not found.".mysqli_connect_error());
     if(mysqli_num_rows($check)>0){
-    //product found and can be deleted.
+    //Product found and can be deleted.
         $queryDelete = mysqli_query($con, "DELETE FROM webshop WHERE id = '$key' ") or die ("Not deleted.".mysqli_connect_error());?>
    <div class="alert">
        <p>Product deleted</p>
@@ -39,7 +43,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
    
    <?php }
     else{
-        //give warning, that the product is missing?>
+        //Give warning, that the product is missing?>
     <div class= "alert">
         <p>Product missing</p>
     </div>
@@ -47,6 +51,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
     <?php }
        }
     ?>
+    //Creating the table for fetched products and checkbox/deletebutton.
     <table class="table table-condensed table-bordered">
         <a href="Products.php">Back to the webshop</a><br/>
         <tr>

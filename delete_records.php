@@ -19,7 +19,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 <body style="padding-top: 100px;">
 
 <?php
-    $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("Could not fetch.".mysqli_error());
+    $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("Could not fetch.".mysqli_connect_error());
 ?>    
     <h1>Product List</h1>
 <div class="container">
@@ -27,10 +27,10 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
     if(isset($_POST['submitDeleteBtn'])){
     $key = $_POST['keyToDelete'];
         //check if the products are there
-    $check = mysqli_query($con,"SELECT * FROM webshop WHERE id ='$key' ") or die ("Product not found.".mysqli_error());
+    $check = mysqli_query($con,"SELECT * FROM webshop WHERE id ='$key' ") or die ("Product not found.".mysqli_connect_error());
     if(mysqli_num_rows($result)>0{
     //product found and can be deleted.
-        $queryDelete = mysqli_query($con, "DELETE FROM webshop WHERE id = '$key' ") or die ("Not deleted."mysqli_error());?>
+        $queryDelete = mysqli_query($con, "DELETE FROM webshop WHERE id = '$key' ") or die ("Not deleted.".mysqli_connect_error());?>
    <div class="alert">
        <p>Product deleted</p>
     </div>

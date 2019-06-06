@@ -30,6 +30,7 @@ $sql = "INSERT INTO webshop (name, type, price, color, label, image, review)
 
 if($conn->query($sql) === TRUE) {
     echo "Product addded.";
+    header("location:javascript://history.go(-1)");
 }
 else
 {

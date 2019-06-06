@@ -3,16 +3,12 @@ foreach  ($_SERVER as $key => $value) {
     if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
         continue;
     }
-
     $host = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
     $user = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
     $passwd = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
     $database = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value); 
 }
-
 $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
-
-
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +27,10 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
     if(isset($_POST['submitDeleteBtn'])){
     $key = $_POST['keyToDelete'];
         //check if the products are there
-    $check = mysqli_query($con,"SELECT * FROM webshop WHERE id ='$key' ") or die ("Product not found.".mysqli_error());
+    $check = mysqli_query($con,"SELECT * FROM webshop WHERE valinta ='$key' ") or die ("Product not found.".mysqli_error());
     if(mysqli_num_rows($check)>0{
     //product found and can be deleted.
-        $queryDelete = mysqli_query($con, "DELETE from webshop WHERE id = '$key' ") or die ("Not deleted."mysqli_error());?>
+        $queryDelete = mysqli_query($con, "DELETE FROM webshop WHERE valinta = '$key' ") or die ("Not deleted."mysqli_error());?>
    <div class="alert">
        <p>Product deleted</p>
     </div>
@@ -74,7 +70,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
                 <td><?php echo $row['label'];?></td>
                 <td><?php echo $row['review'];?></td>
                 <td>
-                    <input type="checkbox" name="keyToDelete" value="<?php echo $row['id'];?>" required>
+                    <input type="checkbox" name="keyToDelete" value="<?php echo $row['valinta'];?>" required>
                 </td>
                 <td>
                     <input type="submit" name="submitDeleteBtn" class="btn" value="Delete">

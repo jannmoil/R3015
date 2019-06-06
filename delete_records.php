@@ -17,7 +17,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
         <title>Delete Records</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
-<body>
+<body style="padding-top: 100px;">
 
 <?php
     $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("Could not fetch.".mysqli_connect_error());

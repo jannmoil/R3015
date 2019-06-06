@@ -52,10 +52,10 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
                 <td><?php echo $row['label'];?></td>
                 <td><?php echo $row['review'];?></td>
                 <td>
-                    <input type="checkbox" name="keyToDelete" value="<?php echo $row['id'];?>">
+                    <input type="checkbox" name="keyToDelete" value="<?php echo $row['id'];?>" required>
                 </td>
                 <td>
-                    <input type="submit" name="submitDeleteBtn" class="btn">
+                    <input type="submit" name="submitDeleteBtn" class="btn" value="Delete">
                 </td>
             </form>
         </tr>    

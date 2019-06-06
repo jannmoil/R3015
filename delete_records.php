@@ -35,8 +35,8 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
             <th>Price</th>
             <th>Color</th>
             <th>Label</th>
-            <th>Review></th>
-            <th>Select></th>
+            <th>Review</th>
+            <th>Select</th>
             <th>Delete</th>
         </tr>
         <?php

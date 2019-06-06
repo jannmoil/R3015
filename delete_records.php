@@ -16,11 +16,12 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 <head>
         <title>Delete Records</title>
 </head>
-<body style="padding-top: 100px;">
+<body>
 
 <?php
     $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("Could not fetch.".mysqli_connect_error());
-?>    
+?>   
+    <a href="Products.php">Back to the webshop</a><br/>
     <h1>Product List</h1>
 <div class="container">
     <?php

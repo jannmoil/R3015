@@ -23,7 +23,7 @@ $con = mysqli_connect($host, $user, $passwd, $database) or die(mysqli_error());
 <body style="padding-top: 100px;">
 
 <?php
-    $fetchQuery = mysqli_query($sql,"SELECT * FROM webshop") or die("could not fetch".mysqli_error());
+    $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("could not fetch".mysqli_error());
 ?>    
 
 <div class="container">

@@ -34,7 +34,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
     $check = mysqli_query($con,"SELECT * FROM webshop WHERE id ='$key' ") or die ("Product not found.".mysqli_error());
     if(mysqli_num_rows($check)>0{
     //product found and can be deleted.
-        $queryDelete = mysqli_query($con, "DELETE FROM webshop WHERE id = '$key' ") or die ("Not deleted."mysqli_error());?>
+        $queryDelete = mysqli_query($con, "DELETE from webshop WHERE id = '$key' ") or die ("Not deleted."mysqli_error());?>
    <div class="alert">
        <p>Product deleted</p>
     </div>

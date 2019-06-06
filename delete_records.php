@@ -15,7 +15,6 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 <!DOCTYPE html>
 <html>
 <head>  
-        //Title and stylesheet url
         <title>Delete Records</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
@@ -48,10 +47,10 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
         <p>Product missing</p>
     </div>
     
+   
     <?php }
        }
-    ?>
-    //Creating the table for fetched products and checkbox/deletebutton.
+    //Creating table and buttons/checkboxes?>
     <table class="table table-condensed table-bordered">
         <a href="Products.php">Back to the webshop</a><br/>
         <tr>

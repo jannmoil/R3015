@@ -8,6 +8,7 @@ $siteController = new SiteController();
 
 $title = "Add a new Product";
 
+//Creating a form for adding data. Running insert.php.
 $content ="<form action='insert.php' method='post'>
     <fieldset>
         <legend>Add a new product</legend>

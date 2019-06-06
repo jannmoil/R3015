@@ -23,7 +23,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
     $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("Could not fetch.".mysqli_connect_error());
 ?>   
     <a href="Products.php">Back to the webshop</a><br/>
-    <h1>Product List</h1>
+    
 <div class="container">
     <?php
     if(isset($_POST['submitDeleteBtn'])){
@@ -47,7 +47,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
     <?php }
        }
     ?>
-    <table>
+    <table class="table table-condensed table-bordered">
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -75,7 +75,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
                     <input type="checkbox" name="keyToDelete" value="<?php echo $row['id'];?>" required>
                 </td>
                 <td>
-                    <input type="submit" name="submitDeleteBtn" class="btn" value="Delete">
+                    <input type="submit" name="submitDeleteBtn" class="btn btn-info" value="Delete">
                 </td>
             </form>
         </tr>    

@@ -15,6 +15,7 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 <html>
 <head>
         <title>Delete Records</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 

@@ -25,8 +25,13 @@ $con = new mysqli($host, $user, $passwd, $database) or die(mysqli_error());
 <?php
     $fetchQuery = mysqli_query($con,"SELECT * FROM webshop") or die("could not fetch".mysqli_error());
 ?>    
-
+    <h1>Product List</h1>
 <div class="container">
+    <?php
+    if(isset($_POST['submitDeleteBtn'])){
+    $key = $_POST['keyToDelete'];
+    }
+    ?>
     <table>
         <tr>
             <th>ID</th>
